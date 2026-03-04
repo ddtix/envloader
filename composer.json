@@ -9,7 +9,8 @@
     },
     "authors": [
         {
-            "name": "Dmitrii Tikhonov <dd.tikh@gmail.com>"
+            "name": "Dmitrii Tikhonov",
+            "email": "dd.tikh@gmail.com"
         }
     ],
     "require": {}

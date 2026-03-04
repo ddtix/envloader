@@ -1,17 +1,40 @@
 <?php
 
-namespace Ddtix\envloader;
+namespace Ddtix\Envloader;
 
 class ENV
 {
+    /** @return array<mixed, mixed> */
     public static function load(string $path): array
     {
-        $envFile = rtrim($path, '/') . '/.env';
+        $envFile = $path . '/../.env';
 
         if (!file_exists($envFile)) {
             throw new \Exception(".env file not found: $envFile");
         }
 
-        return parse_ini_file($envFile);
+        $items = parse_ini_file($envFile);
+        if ($items === false) {
+            throw new \RuntimeException("Failed to parse .env file: $envFile");
+        }
+
+        self::fillenv($items);
+
+        return $items;
+    }
+
+    /** @param array<mixed, mixed> $items */
+    private static function fillenv(array $items): void
+    {
+        foreach ($items as $key => $value) {
+            if (!is_string($key) || !is_scalar($value)) {
+                continue;
+            }
+
+            $value = (string) $value;
+
+            $_ENV[$key] = $value;
+            putenv("$key=$value");
+        }
     }
 }

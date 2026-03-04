@@ -1,0 +1,16 @@
+{
+    "name": "ddtix/envloader",
+    "description": "Load params from .env",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ddtix\\Envloader\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dmitrii Tikhonov <dd.tikh@gmail.com>"
+        }
+    ],
+    "require": {}
+}

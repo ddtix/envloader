@@ -12,7 +12,7 @@ class ENV
             throw new \Exception(".env file not found: $envFile");
         }
 
-        $items = parse_ini_file($envFile);
+        $items = parse_ini_file($envFile, false, INI_SCANNER_TYPED);
         if ($items === false) {
             throw new \RuntimeException("Failed to parse .env file: $envFile");
         }
@@ -24,7 +24,7 @@ class ENV
     private static function fillenv(array $items): void
     {
         foreach ($items as $key => $value) {
-            if (!is_string($key) || !is_scalar($value)) {
+            if (is_string($key) || !is_scalar($value)) {
                 continue;
             }
 

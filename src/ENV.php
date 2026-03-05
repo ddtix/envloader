@@ -20,7 +20,7 @@ class ENV
 
         self::fillenv($items);
 
-        return $items;
+        return $_ENV;
     }
 
     /** @param array<mixed, mixed> $items */
@@ -30,8 +30,6 @@ class ENV
             if (!is_string($key) || !is_scalar($value)) {
                 continue;
             }
-
-            $value = (string) $value;
 
             $_ENV[$key] = $value;
             putenv("$key=$value");

@@ -4,7 +4,6 @@ namespace Ddtix\Envloader;
 
 class ENV
 {
-    /** @return array<mixed, mixed> */
     public static function load(string $path): void
     {
         $envFile = $path . '/../.env';

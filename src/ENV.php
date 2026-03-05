@@ -17,6 +17,9 @@ class ENV
             throw new \RuntimeException("Failed to parse .env file: $envFile");
         }
 
+        $_ENV['MAIN_PATH'] = $path;
+        putenv("MAIN_PATH=$path");
+
         self::fillenv($items);
     }
 

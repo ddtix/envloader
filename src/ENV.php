@@ -24,7 +24,7 @@ class ENV
     private static function fillenv(array $items): void
     {
         foreach ($items as $key => $value) {
-            if (is_string($key) || !is_scalar($value)) {
+            if (!is_string($key) || !is_scalar($value)) {
                 continue;
             }
 
